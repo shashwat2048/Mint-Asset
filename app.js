@@ -28,7 +28,7 @@ function displayNews(articles) {
       <h2>${article.headline}</h2>
       <p>${article.summary || ''}</p>
       <div class="card-footer">
-        <button onclick="window.open('${article.url}', '_blank')">Read more...</button>
+        <button onclick="window.open('${article.url}', '_blank')">Read more</button>
         <small>Published at: ${new Date(article.datetime * 1000).toLocaleString()}</small>
       </div>
     `;
