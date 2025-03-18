@@ -17,8 +17,8 @@ async function fetchNews() {
 function displayNews(articles) {
   newsContainer.innerHTML = '';
   articles.forEach(article => {
-    if (article.image === "https://static2.finnhub.io/file/publicdatany/finnhubimage/market_watch_logo.png") {
-      return;
+    if (article.image.includes("market_watch_logo.png") || article.image === "") {
+        return;
     }
     const newsItem = document.createElement('div');
     newsItem.className = 'news-item';
