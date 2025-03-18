@@ -1,0 +1,148 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #4b4949;
+}
+
+
+header, footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+header {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+#news-container {
+  display: grid;
+  grid-gap: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 767px) {
+  #news-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  #news-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  #news-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.news-item {
+  display: flex;
+  flex-direction: column;
+  background-color: ivory;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.news-item:hover {
+  transition: linear 0.2s;
+  transform: translateY(-5px);
+  box-shadow: 2px 5px 10px rgba(255, 255, 255, 0.137);
+}
+
+.news-item h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.news-item img {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.news-item p {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.card-footer button {
+  background-color: #38b6ff;
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.311);
+}
+
+.card-footer button:hover {
+  background-color: #005bb5;
+}
+
+.card-footer small {
+  font-size: 0.85rem;
+  font-weight: 4000;
+  color: #747272;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 10px 20px;
+  color: #fff;
+  gap: 10px;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.brand-img {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
