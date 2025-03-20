@@ -1,7 +1,9 @@
 const API_KEY = 'cvcr051r01qodeub228gcvcr051r01qodeub2290';
 const newsContainer = document.getElementById('news-container');
+const loader = document.getElementById('loader');
 
 async function fetchNews() {
+  loader.style.display = 'flex';
   try {
     const url = `https://finnhub.io/api/v1/news?category=general&token=${API_KEY}`;
     const response = await fetch(url);
@@ -13,6 +15,9 @@ async function fetchNews() {
   } catch (error) {
     console.error('Error fetching news:', error);
     newsContainer.innerHTML = '<p>Error loading news. Please try again later.</p>';
+  }
+  finally {
+    loader.style.display = 'none';
   }
 }
 
