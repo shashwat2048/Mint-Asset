@@ -169,11 +169,6 @@ header {
   z-index: 1;
 }
 
-.loader-logo {
-  width: 150px;
-  height: 150px;
-}
-
 .spinner {
   border: 8px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
