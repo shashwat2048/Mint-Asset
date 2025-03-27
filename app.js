@@ -12,9 +12,9 @@ function getBatchSize() {
   if (width <= 768) {     
     return 10;
   } else if (width <= 1024) {  
-    return 15;
+    return 14;
   } else {                 
-    return 20;
+    return 18;
   }
 }
 
