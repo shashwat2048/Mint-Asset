@@ -4,7 +4,6 @@ body {
   background-color: #4b4949;
 }
 
-
 header, footer {
   background-color: #333;
   color: ivory;
@@ -40,17 +39,26 @@ header {
   #news-container {
     grid-template-columns: 1fr;
   }
+  #weatherContainer{
+    font-size: 0.8rem;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   #news-container {
     grid-template-columns: repeat(2, 1fr);
   }
+  #weatherContainer{
+    font-size: 1rem;
+  }
 }
 
 @media (min-width: 1024px) {
   #news-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+  #weatherContainer{
+    font-size: 1.2rem;
   }
 }
 
@@ -124,14 +132,36 @@ header {
   color: #747272;
 }
 
-.navbar {
+#navBar {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: inherit;
-  padding: 10px 20px;
   color: inherit;
-  gap: 10px;
+  gap: 1.5rem;
+  overflow: hidden;
+  padding: 1rem 0rem 0rem 0rem;
+}
+
+#weatherContainer{
+  display: flex;
+  gap:10px;
+  justify-content: center;
+  align-items: center;
+  background-color: #005bb5;
+  font-weight: 500;
+  width: 100%;
+  margin: 0;
+}
+
+#home-btn{
+  position: sticky;
+  top:50px;
+  z-index: 2;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .brand-container {
@@ -166,7 +196,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  z-index: 10;
 }
 
 #loader-2{
