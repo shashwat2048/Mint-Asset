@@ -223,7 +223,7 @@ header {
 
 .draggable {
   position: fixed;
-  top: 158px;
+  top: 162px;
   left: 10px; 
   z-index: 3;
   cursor: grab;
