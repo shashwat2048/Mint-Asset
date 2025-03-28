@@ -220,3 +220,18 @@ header {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.draggable {
+  top:148px;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: fixed;
+  z-index: 3;
+  cursor: grab;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
