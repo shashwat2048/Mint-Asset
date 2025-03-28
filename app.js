@@ -3,6 +3,7 @@ const newsContainer = document.getElementById('news-container');
 const loader = document.getElementById('loader');
 const Batchloader = document.getElementById('loader-2');
 const sentinel = document.getElementById('sentinel');
+const homeBtn = document.getElementById('home-btn');
 let allNews = [];
 let currentIndex = 0;
 const batchSize = getBatchSize();
@@ -73,7 +74,6 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 1.0 });
 observer.observe(sentinel);
 
-
 function displayNews(articles) {
   articles.forEach(article => {
     if (article.image.includes("market_watch_logo.png") ||article.image.includes("logobbg-wht.png")|| article.image === "") {
@@ -125,23 +125,24 @@ let header = document.querySelector('header');
 let footer = document.querySelector('footer');
 let body = document.querySelector('body');
 let logo = document.querySelector('.brand-link span');
+let weatherContainer = document.getElementById('weatherContainer');
 
 function darkTheme(){
-  updateBgTheme("#000000", "#e0e0e0", "#1f2a2d", "#e0e0e0", "#1f2a2d", "#e0e0e0", "#e0e0e0");
+  updateBgTheme("#000000", "#e0e0e0", "#1f2a2d", "#e0e0e0", "#1f2a2d", "#e0e0e0", "#e0e0e0", "inherit");
   updateNewsCardTheme("#0080aa", "#ffffff", "ivory", "#ffd027", "#000000", "#dce6e8");
   localStorage.setItem('selected-theme', 'dark');
   console.log('Dark theme applied');
 }
 
 function lightTheme(){
-  updateBgTheme("#ccedfd", "#072235", "#f5f2f9", "#072235", "#f5f2f9", "#072235", "#072235");
+  updateBgTheme("#ccedfd", "#072235", "#f5f2f9", "#072235", "#f5f2f9", "#072235", "#072235", "#f9f0ff");
   updateNewsCardTheme("#f9f0ff", "#013c4a", "#016179", "#9857ff", "#f9f0ff", "#8ea4d2");
   localStorage.setItem('selected-theme', 'light');
   console.log('Light theme applied');
 }
 
 function defaultTheme(){
-  updateBgTheme("#4b4949", "ivory", "#333", "ivory", "#333", "ivory", "ivory");
+  updateBgTheme("#4b4949", "ivory", "#333", "ivory", "#333", "ivory", "ivory", "inherit");
   updateNewsCardTheme("ivory", "#333", "#555", "#38b6ff", "#fff", "#747272");
   localStorage.setItem('selected-theme', 'default');
   console.log('Default theme applied');
@@ -163,7 +164,7 @@ function updateNewsCardTheme(cardBg, headlineColor, summaryColor, btnBg, btnColo
   });
 }
 
-function updateBgTheme(bgColor, bgTextColor, headerColor, headerTextColor, footerColor, footerTextColor, logoColor) {
+function updateBgTheme(bgColor, bgTextColor, headerColor, headerTextColor, footerColor, footerTextColor, logoColor, weatherColor) {
   body.style.backgroundColor = bgColor;
   body.style.color = bgTextColor;
   header.style.backgroundColor = headerColor;
@@ -171,6 +172,56 @@ function updateBgTheme(bgColor, bgTextColor, headerColor, headerTextColor, foote
   footer.style.backgroundColor = footerColor;
   footer.style.color = footerTextColor;
   logo.style.color = logoColor;
+  weatherContainer.style.color = weatherColor;
 }
 
 applyTheme(storedTheme);
+
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+} else {
+  console.error("Geolocation is not supported by this browser.");
+}
+
+function successCallback(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  fetchWeather(latitude, longitude);
+}
+
+function errorCallback(error) {
+  console.error("Error retrieving location:", error);
+}
+
+function fetchWeather(lat, lon) {
+  const apiKey = 'ed85e75c7e07ca579b80f3e1fa9f5a9b';
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log("Weather data:", data);
+      displayWeather(data);
+    })
+    .catch(error => console.error("Error fetching weather data:", error));
+}
+
+function displayWeather(data) {
+  const temperature = data.main.feels_like;
+  const description = data.weather[0].description;
+  const city = data.name;
+  const region = data.sys.country;
+
+  weatherContainer.innerHTML = `
+    <span>${temperature}°C</span>
+    <span>${description},</span>
+    <span>${city}</span>
+    <span>${region}</span>
+  `;
+}
+
+homeBtn.addEventListener('click', function() {
+  header.scrollIntoView({behavior: 'smooth'});
+});
+
+
