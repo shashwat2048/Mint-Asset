@@ -224,4 +224,48 @@ homeBtn.addEventListener('click', function() {
   header.scrollIntoView({behavior: 'smooth'});
 });
 
+let isDragging = false;
+let offsetX, offsetY;
 
+homeBtn.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  offsetX = e.clientX - homeBtn.getBoundingClientRect().left;
+  offsetY = e.clientY - homeBtn.getBoundingClientRect().top;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const posX = e.clientX - offsetX;
+  const posY = e.clientY - offsetY;
+  setBtnPosition(posX,posY);
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+homeBtn.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  const touch = e.touches[0];
+  offsetX = touch.clientX - homeBtn.getBoundingClientRect().left;
+  offsetY = touch.clientY - homeBtn.getBoundingClientRect().top;
+});
+
+document.addEventListener('touchmove', (e) => {
+  if (!isDragging) return;
+  const touch = e.touches[0];
+  const posX = touch.clientX - offsetX;
+  const posY = touch.clientY - offsetY;
+  setBtnPosition(posX,posY);
+});
+
+document.addEventListener('touchend', () => {
+  isDragging = false;
+});
+
+function setBtnPosition(x,y){
+  homeBtn.style.left = x + 'px';
+  homeBtn.style.top = y + 'px';
+  homeBtn.style.right = 'auto';
+  homeBtn.style.bottom = 'auto';
+}
