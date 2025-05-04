@@ -156,6 +156,13 @@ header {
   margin: 0;
 }
 
+#weather-icon{
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+
 #home-btn{
   position: sticky;
   top:50px;
