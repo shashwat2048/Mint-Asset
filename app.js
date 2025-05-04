@@ -211,8 +211,11 @@ function displayWeather(data) {
   const description = data.weather[0].description;
   const city = data.name;
   const region = data.sys.country;
+  const iconCode = data.weather[0].icon;  
+  const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;  
 
   weatherContainer.innerHTML = `
+    <img src="${iconUrl}" alt="Weather icon" id="weather-icon">
     <span>${temperature}°C</span>
     <span>${description},</span>
     <span>${city}</span>
@@ -237,8 +240,16 @@ document.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   const posX = e.clientX - offsetX;
   const posY = e.clientY - offsetY;
-  setBtnPosition(posX,posY);
+  setBtnPosition(posX, posY);
 });
+
+function setBtnPosition(x, y) {
+  homeBtn.style.left = x + 'px';
+  homeBtn.style.top = y + 'px';
+  homeBtn.style.right = 'auto';
+  homeBtn.style.bottom = 'auto';
+}
+
 
 document.addEventListener('mouseup', () => {
   isDragging = false;
