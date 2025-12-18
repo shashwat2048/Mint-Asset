@@ -435,9 +435,8 @@ async function fetchNews({ category, force } = {}) {
 
     const normalized = dedupeByUrl((data || []).map(normalizeArticle));
     allNews = normalized;
-    filteredNews = sortArticles(normalized);
     setLastUpdated(Date.now());
-    resetAndRender();
+    filterArticles(); // respects search/sort + bookmarks toggle
     showStatus("");
   } catch (error) {
     console.error("Error fetching news:", error);
@@ -454,6 +453,14 @@ const storedTheme = localStorage.getItem('selected-theme') || 'default';
 themeSelect.value = storedTheme;
 applyTheme(storedTheme);
 
+// Support SEO/SearchAction: /?q=tesla pre-fills search
+try {
+  const qFromUrl = new URLSearchParams(window.location.search).get("q");
+  if (qFromUrl && searchInput) searchInput.value = qFromUrl;
+} catch {
+  // ignore
+}
+
 themeSelect.addEventListener("change", () => applyTheme(themeSelect.value));
 searchInput.addEventListener("input", () => filterArticles());
 sortSelect.addEventListener("change", () => filterArticles());
@@ -465,6 +472,20 @@ categorySelect.addEventListener("change", () => {
 });
 
 retryBtn.addEventListener("click", () => fetchNews({ category: categorySelect.value, force: true }));
+
+// SEO quick-links: jump to feed + switch category
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[data-set-category]");
+  if (!a) return;
+  const cat = a.getAttribute("data-set-category");
+  if (!cat) return;
+  e.preventDefault();
+  if (categorySelect) categorySelect.value = cat;
+  bookmarksOnlyToggle.checked = false;
+  fetchNews({ category: cat, force: true });
+  newsContainer?.focus?.({ preventScroll: true });
+  if (location.hash !== "#feed") history.replaceState(null, "", "#feed");
+});
 
 newsContainer.addEventListener("click", async (e) => {
   const btn = e.target.closest("button[data-action]");

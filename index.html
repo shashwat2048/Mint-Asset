@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mint Asset — Market News App | Stock, Crypto, Forex Headlines</title>
   <meta name="description" content="Mint Asset is a fast market news app by Shashwat Shinghal. Track stock market news, crypto and forex headlines, save stories, and share updates in a clean reader view.">
+  <meta name="author" content="Shashwat Shinghal">
+  <meta name="application-name" content="Mint Asset">
+  <meta name="apple-mobile-web-app-title" content="Mint Asset">
   <link rel="canonical" href="https://mint-asset.vercel.app/">
   <meta name="robots" content="index,follow,max-image-preview:large">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mint Asset">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Mint Asset — Market News App">
   <meta property="og:description" content="Market news app for stock, crypto, and forex headlines. Save and share stories with a clean in-app reader.">
   <meta property="og:url" content="https://mint-asset.vercel.app/">
@@ -74,6 +78,57 @@
         "operatingSystem": "Web",
         "url": "https://mint-asset.vercel.app/",
         "creator": { "@id": "https://mint-asset.vercel.app/#shashwat-shinghal" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mint-asset.vercel.app/#webpage",
+        "url": "https://mint-asset.vercel.app/",
+        "name": "Mint Asset — Market News App",
+        "description": "Track stock market news, crypto and forex headlines. Save stories and read them in a clean in-app reader view.",
+        "isPartOf": { "@id": "https://mint-asset.vercel.app/#website" },
+        "about": { "@id": "https://mint-asset.vercel.app/#app" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://mint-asset.vercel.app/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mint-asset.vercel.app/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://mint-asset.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Mint Asset?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mint Asset is a market news app for tracking stock market news, crypto, and forex headlines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I save articles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can bookmark stories and view them later using the Saved toggle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does search work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the search box to filter by headline, summary, or source. You can also open the app with a query like ?q=tesla to prefill search."
+            }
+          }
+        ]
       }
     ]
   }
@@ -142,7 +197,27 @@
   <main>
     <h1 class="sr-only">Mint Asset — Market News App</h1>
     <div id="status" class="status" role="status" aria-live="polite"></div>
-    <div id="news-container"></div>
+    <section class="seo-intro" aria-label="Market news overview">
+      <h2>Stock, crypto &amp; forex news — fast</h2>
+      <p>
+        Mint Asset is a clean market news reader that helps you track <strong>stock market news</strong>,
+        <strong>crypto</strong>, and <strong>forex</strong> headlines. Search stories, sort by time, save bookmarks,
+        and read summaries in a distraction-free reader view.
+      </p>
+      <nav class="quick-links" aria-label="Popular categories">
+        <a href="#feed" data-set-category="general">General</a>
+        <a href="#feed" data-set-category="crypto">Crypto</a>
+        <a href="#feed" data-set-category="forex">Forex</a>
+        <a href="#feed" data-set-category="merger">M&amp;A</a>
+      </nav>
+    </section>
+    <noscript>
+      <section class="seo-intro" aria-label="JavaScript required">
+        <h2>JavaScript required</h2>
+        <p>Mint Asset loads live headlines using JavaScript. Please enable JavaScript to view the news feed.</p>
+      </section>
+    </noscript>
+    <div id="news-container" tabindex="-1"></div>
   </main>
   <div id="loader-2">
     <img src="./ma_favicon.png" alt="Loading Logo" class="spinner">

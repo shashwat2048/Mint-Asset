@@ -605,6 +605,68 @@ body[data-theme="light"] .btn.subtle{
   display: none;
 }
 
+/* Crawlable intro (above the feed) */
+.seo-intro{
+  width: min(1200px, calc(100% - 2rem));
+  margin: 1rem auto 0;
+  padding: 0.9rem 1.05rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  text-align: left;
+}
+
+.seo-intro h2{
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.seo-intro p{
+  margin: 0.25rem 0 0;
+  color: rgba(255,255,255,0.80);
+  line-height: 1.65;
+}
+
+body[data-theme="light"] .seo-intro{
+  background: rgba(7,34,53,0.06);
+}
+
+body[data-theme="light"] .seo-intro h2{
+  color: rgba(7,34,53,0.92);
+}
+
+body[data-theme="light"] .seo-intro p{
+  color: rgba(7,34,53,0.78);
+}
+
+.quick-links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.quick-links a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+  background: rgba(0,0,0,0.10);
+}
+
+body[data-theme="light"] .quick-links a{
+  background: rgba(7,34,53,0.06);
+}
+
+.quick-links a:hover{
+  filter: brightness(1.06);
+}
+
 /* Footer about section */
 .about{
   width: min(1200px, calc(100% - 2rem));
