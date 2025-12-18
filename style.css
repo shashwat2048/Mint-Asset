@@ -75,6 +75,7 @@ body.modal-open{
   white-space: nowrap !important;
   border: 0 !important;
 }
+
 header, footer {
   background-color: var(--surface);
   color: var(--surfaceText);
@@ -254,7 +255,6 @@ body[data-theme="light"] .icon-btn:hover{
 body[data-theme="default"] .icon-btn:hover{
   background: color-mix(in srgb, var(--brand) 18%, rgba(255,255,255,0.10));
   border-color: color-mix(in srgb, var(--brand) 45%, var(--border));
-
 }
 
 body[data-theme="default"] .icon-btn.is-active:hover{
@@ -605,8 +605,7 @@ body[data-theme="light"] .btn.subtle{
   display: none;
 }
 
-/* SEO intro content (visible, but compact) */
-/* Footer about section (cleaner than a big hero block) */
+/* Footer about section */
 .about{
   width: min(1200px, calc(100% - 2rem));
   margin: 0.5rem auto 0.9rem;

@@ -66,7 +66,7 @@ function getBatchSize() {
   const width = window.innerWidth;
   if (width <= 768) return 10;
   if (width <= 1024) return 14;
-    return 18;
+  return 18;
 }
 
 function showStatus(message) {
