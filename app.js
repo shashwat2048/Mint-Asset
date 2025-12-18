@@ -23,7 +23,8 @@ const WEATHER_API_KEY =
   String(RUNTIME_CONFIG.WEATHER_API_KEY || "").trim() ||
   String(localStorage.getItem("mintasset-weather-key") || "").trim();
 
-const FALLBACK_IMAGE = "./mint_asset_pic.png";
+// Keep as a stable root URL (served from Vite `public/`)
+const FALLBACK_IMAGE = "/mint_asset_pic.png";
 const BOOKMARKS_KEY = "mintasset-bookmarks-v1";
 
 const newsContainer = document.getElementById('news-container');
