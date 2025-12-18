@@ -263,7 +263,17 @@
     <p>&copy; 2025 Mint Asset - your everyday market news app</p>
   </footer>
   <!-- Optional runtime config (NOT committed). Copy config.example.js -> config.js -->
-  <script src="config.js"></script>
+  <script>
+    // Optional runtime config (NOT committed): config.js can define window.MINT_ASSET_CONFIG
+    // We load it dynamically so missing config.js doesn't cause console errors or Vite warnings.
+    (function () {
+      var s = document.createElement("script");
+      s.src = "./config.js";
+      s.async = true;
+      s.onerror = function () { /* optional */ };
+      document.head.appendChild(s);
+    })();
+  </script>
   <!-- Vite + modern browsers: load as a module (enables import.meta.env in app.js) -->
   <script type="module" src="app.js"></script>
 </body>
